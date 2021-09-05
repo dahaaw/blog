@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Container from '@components/Container';
 
 export default function Navbar() {
     const [dropdown, setDropdown] = useState(false);
@@ -8,13 +9,15 @@ export default function Navbar() {
         {text: "Open Source", href: "#"}
     ];
     return (
-        <nav className="container mx-auto py-10">
+        <Container>
           <div className="flex items-center">
+
             <div className="w-2/12 flex items-center">
                 <div className="w-10 h-10 bg-gray-500 rounded flex items-center justify-center mr-6">DB</div>
                 Dahaaw Blog
             </div>
-            <div className="w-8/12">
+
+            <div className="w-7/12">
               <ul className="space-x-10 flex items-center">
                 <li><a className="hover:underline" href="#">UI Design</a></li>
                 <li><a className="hover:underline" href="#">Front End</a></li>
@@ -40,10 +43,12 @@ export default function Navbar() {
                 </li>
               </ul>
             </div>
+
             <div className="w-3/12">
               <input className="bg-gray-700 py-3 px-6 w-full rounded-full border-0 bg-search pl-12" placeholder="Search ..."/>
             </div>
+
           </div>
-        </nav>
+        </Container>
     )
 }
