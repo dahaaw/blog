@@ -7,7 +7,6 @@ import mockPost from '@data/post.json';
 
 export default function Home() {
   const [post, setPost] = useState(mockPost);
-  console.log(mockPost)
   return (
       <Layout>
         <Container>

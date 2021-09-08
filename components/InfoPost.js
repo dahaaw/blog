@@ -1,5 +1,5 @@
-import PostMeta from "./PostMeta";
-import PostAuthor from "./PostAuthor";
+import PostMeta from "@components/PostMeta";
+import PostAuthor from "@components/PostAuthor";
 
 export default function InfoPost({
     category, date, title, shortDescription, authorAvatar, authorName, authorJob

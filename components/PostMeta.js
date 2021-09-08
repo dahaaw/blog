@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function PostMeta({category, date, title, center}) {
     return (
         <div>

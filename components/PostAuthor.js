@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function PostAuthor({authorAvatar, authorName, authorJob}) {
     return (
         <div className="flex items-center mt-5">
