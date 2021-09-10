@@ -3,6 +3,7 @@ import Container from '@components/Container';
 
 export default function Navbar() {
     const [dropdown, setDropdown] = useState(false);
+    const [offcanvas, setOffcanvas] = useState(false);
     const lainnyaList = [
         {text: "Internet", href: "#"},
         {text: "Book", href: "#"},
@@ -13,7 +14,7 @@ export default function Navbar() {
         <Container>
           <div className="flex items-center">
             <div className="w-3/12 lg:hidden">
-              <button>
+              <button onClick={() => setOffcanvas(true)}>
               <svg viewBox="0 0 100 80" width="20" height="20">
                 <rect width="100" height="20"></rect>
                 <rect y="30" width="100" height="20"></rect>
@@ -30,8 +31,11 @@ export default function Navbar() {
                 <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z"/>
               </svg>
             </div>
-            <div className="lg:w-7/12 w-full bg-white fixed top-0 left-0 h-full">
-              <ul className="space-x-10 flex items-center">
+            <div className={`lg:w-7/12 w-full bg-gradient-to-b from-gray-600 to-gray-900 fixed top-0 h-full p-10 transition-all ${offcanvas ? "left-0"  : "-left-full"} `}>
+              <button className="absolute top-10 right-10" onClick={() => setOffcanvas(false)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+              <ul className="lg:space-x-14 flex lg:items-center flex-col space-y-4">
                 <li><a className="hover:underline" href="#">UI Design</a></li>
                 <li><a className="hover:underline" href="#">Front End</a></li>
                 <li><a className="hover:underline" href="#">Back End</a></li>
