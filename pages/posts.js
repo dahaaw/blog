@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Layout from "@components/Layout";
 import CardPost from "@components/CardPost";
 import Container from "@components/Container";
@@ -7,9 +8,12 @@ import mockPosts from "@data/post.json";
 
 export default function Posts(){
     const [posts, setPosts] = useState(mockPosts);
-
+    
     return(
         <Layout>
+            <Head>
+                <title>Category &mdash; DB</title>
+            </Head>
             <Container>
                 <SectionHeaders>UI Design</SectionHeaders>
                 {!posts.length ? (

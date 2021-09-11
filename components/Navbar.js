@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Link from 'next/link';
 import Container from '@components/Container';
 
 export default function Navbar() {
     const [dropdown, setDropdown] = useState(false);
     const [offcanvas, setOffcanvas] = useState(false);
+    const [search, setSearch] = useState(false);
     const lainnyaList = [
         {text: "Internet", href: "#"},
         {text: "Book", href: "#"},
@@ -22,23 +24,29 @@ export default function Navbar() {
               </svg>
               </button>
             </div>
-            <div className="lg:w-2/12 w-6/12 flex items-center justify-center lg:justify-start">
-                <div className="w-10 h-10 bg-gray-500 rounded flex items-center justify-center mr-6">DB</div>
+            <div className="lg:w-2/12 w-6/12">
+            <Link href="/">
+              <a className="flex items-center justify-center lg:justify-start">
+                <div className="w-10 h-10 bg-gray-500 rounded flex items-center justify-center mr-4 shadow-xl">DB</div>
                 Dahaaw Blog
+              </a>
+            </Link>
             </div>
             <div className="w-3/12 text-right lg:hidden">
-              <svg className="inline-block" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z"/>
-              </svg>
+              <button onClick={() => setSearch(!search)}>
+                <svg className="inline-block" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd">
+                  <path d="M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z"/>
+                </svg>
+              </button>
             </div>
-            <div className={`lg:w-7/12 w-full bg-gradient-to-b from-gray-600 to-gray-900 fixed top-0 h-full p-10 transition-all ${offcanvas ? "left-0"  : "-left-full"} `}>
-              <button className="absolute top-10 right-10" onClick={() => setOffcanvas(false)}>
+            <div className={`lg:w-7/12 w-full bg-gradient-to-b from-gray-600 to-gray-900 lg:bg-none fixed lg:static top-0 h-full lg:h-auto p-10 lg:p-0 transition-all ${offcanvas ? "left-0"  : "-left-full"} `}>
+              <button className="absolute top-10 right-10 lg:hidden" onClick={() => setOffcanvas(false)}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
               </button>
-              <ul className="lg:space-x-14 flex lg:items-center flex-col space-y-4">
-                <li><a className="hover:underline" href="#">UI Design</a></li>
-                <li><a className="hover:underline" href="#">Front End</a></li>
-                <li><a className="hover:underline" href="#">Back End</a></li>
+              <ul className="lg:space-x-14 flex lg:items-center flex-col lg:flex-row space-y-4 lg:space-y-0">
+                <li><Link href="/posts"><a className="hover:underline">UI Design</a></Link></li>
+                <li><Link href="/posts"><a className="hover:underline">Front End</a></Link></li>
+                <li><Link href="/posts"><a className="hover:underline">Back End</a></Link></li>
                 <li className="relative">
                   <a 
                     className="hover:underline cursor-pointer flex items-center" 
@@ -52,7 +60,9 @@ export default function Navbar() {
                   <ul className="absolute w-[200px] bg-gray-800 rounded shadow-2xl mt-4">
                     {lainnyaList.map(({text, href}) => (
                       <li key={text} className="border-b border-white/5 last:border-0">
-                        <a href={href} className="flex py-3 px-6 hover:bg-gray-700/60">{text}</a>
+                        <Link href={href}>
+                          <a className="flex py-3 px-6 hover:bg-gray-700/60">{text}</a>
+                        </Link>
                         </li>
                     ))}
                     
@@ -61,8 +71,11 @@ export default function Navbar() {
               </ul>
             </div>
 
-            <div className="w-3/12 hidden">
-              <input className="bg-gray-700 py-3 px-6 w-full rounded-full border-0 bg-search pl-12" placeholder="Search ..."/>
+            <div className={`lg:w-3/12 absolute lg:static w-full left-0 px-10 lg:px-0 transition-all ${search ? "top-10" : "-top-40"}`}>
+              <button className="absolute top-3 right-12 lg:hidden" onClick={() => setSearch(false)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+              <input className="bg-gray-700 py-3 px-6 w-full lg:rounded-full rounded-lg bg-search pl-12" placeholder="Search ..."/>
             </div>
 
           </div>

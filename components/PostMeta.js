@@ -1,3 +1,4 @@
+import Link from 'next/link';
 export default function PostMeta({category, date, title, center}) {
     return (
         <div>
@@ -6,7 +7,9 @@ export default function PostMeta({category, date, title, center}) {
                 <span>&bull;</span>
                 <div className="">{date}</div>
             </div>
-            <h2 className={`text-2xl mt-4 ${center ? 'text-center' : ''}`}>{title}</h2>
+            <h2 className={`text-2xl mt-4 ${center ? 'text-center' : ''}`}>
+                <Link href="/detail">{title}</Link>
+            </h2>
         </div>
     )
 }

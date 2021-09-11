@@ -1,11 +1,14 @@
-import InfoPost from "./InfoPost"
+import Link from "next/link";
+import InfoPost from "./InfoPost";
 export default function FeaturedPost(){
     return (
         <article>
             <div className="flex -mx-4 lg:items-center item-start flex-wrap">
 
                 <div className="px-4 lg:w-8/12 md:w-7/12 w-full">
-                    <img src="./15071.jpg" className="rounded-xl w-full mb-4 md:mb-0"/>
+                    <Link href="/detail">
+                        <a><img src="./15071.jpg" className="rounded-xl w-full mb-4 md:mb-0"/></a>
+                    </Link>
                 </div>
 
                 <div className="px-4 lg:w-4/12 md:w-5/12 w-full">
@@ -20,7 +23,7 @@ export default function FeaturedPost(){
                     />
                 </div>
             </div>
-            <hr className="border-white/10 mt-10"/>
+            <hr className="border-white/10 mt-10 md:hidden"/>
         </article>
     )
 }

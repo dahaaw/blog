@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Container from '@components/Container';
 import Layout from '@components/Layout';
 import PostAuthor from '@components/PostAuthor';
@@ -7,6 +8,9 @@ import PostMeta from '@components/PostMeta';
 export default function detail() {
     return (
         <Layout>
+            <Head>
+                <title>Detail &mdash; DB</title>
+            </Head>
             <Container>
                 <div className="md:w-6/12 w-full mx-auto flex items-center flex-col">
                     <PostMeta category="UI DESIGN" date="10 Oktober 2021" title="huru hara hiri" center/>
