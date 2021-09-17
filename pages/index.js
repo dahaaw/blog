@@ -11,7 +11,7 @@ export default function Home() {
   return (
       <Layout>
         <Head>
-          <title>Home &mdash; DB</title>
+          <title>Home wkwkwkwk &mdash; DB</title>
         </Head>
         <Container>
           <FeaturedPost />
